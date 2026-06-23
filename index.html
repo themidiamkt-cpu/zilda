@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Presentes – Zilda Nogueira 65 Anos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #f5efe4;
+      font-family: 'Cormorant Garamond', serif;
+      color: #2b3a5e;
+      background-image:
+        radial-gradient(ellipse at top left, #ddeaf7 0%, transparent 50%),
+        radial-gradient(ellipse at bottom right, #e8d9c0 0%, transparent 50%);
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      padding: 56px 24px 40px;
+      position: relative;
+    }
+    header::after {
+      content: '';
+      display: block;
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c9a84c, transparent);
+      margin: 24px auto 0;
+    }
+    .crown {
+      font-size: 32px;
+      color: #c9a84c;
+      letter-spacing: 12px;
+      margin-bottom: 8px;
+    }
+    header h1 {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.4rem, 8vw, 4rem);
+      color: #2b3a5e;
+      line-height: 1.1;
+    }
+    header .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.85rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c9a84c;
+      margin-top: 6px;
+    }
+    .age-badge {
+      display: inline-block;
+      margin-top: 16px;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 14vw, 6rem);
+      font-weight: 700;
+      background: linear-gradient(135deg, #b8882a, #f0c96b, #b8882a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .age-label {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: #c9a84c;
+      margin-top: -4px;
+    }
+
+    /* ── HERO MESSAGE ── */
+    .hero-msg {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      padding: 0 24px;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: #3d4f6e;
+      font-style: italic;
+    }
+
+    /* ── GOLD DIVIDER ── */
+    .divider {
+      text-align: center;
+      color: #c9a84c;
+      font-size: 1.1rem;
+      letter-spacing: 8px;
+      margin: 8px 0 32px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #2b3a5e;
+      margin-bottom: 6px;
+    }
+    .section-sub {
+      text-align: center;
+      font-size: 0.95rem;
+      color: #7a6040;
+      margin-bottom: 32px;
+      letter-spacing: 1px;
+    }
+
+    /* ── GIFT CARDS ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto 48px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: linear-gradient(160deg, #fffdf7 0%, #f9f0e0 100%);
+      border: 1px solid #e2cc97;
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(180,140,60,0.10);
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(180,140,60,0.18);
+    }
+    .card .flower-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      display: block;
+      object-fit: cover;
+      border-bottom: 1px solid #e2cc97;
+    }
+    .card .card-content {
+      padding: 24px 24px 28px;
+    }
+    .card .gift-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      color: #2b3a5e;
+      margin-bottom: 8px;
+    }
+    .card .gift-desc {
+      font-size: 0.88rem;
+      color: #7a6040;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .card .gift-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #b8882a, #f0c96b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+    .card .btn-gift {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #2b3a5e, #3d5480);
+      color: #f5efe4;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .card .btn-gift:hover { opacity: 0.85; }
+
+    /* ── PIX SECTION ── */
+    .pix-section {
+      max-width: 480px;
+      margin: 0 auto 56px;
+      padding: 0 20px;
+      text-align: center;
+    }
+    .pix-box {
+      background: linear-gradient(160deg, #fffdf7 0%, #f9f0e0 100%);
+      border: 1px solid #e2cc97;
+      border-radius: 16px;
+      padding: 36px 28px;
+      box-shadow: 0 4px 20px rgba(180,140,60,0.10);
+    }
+    .pix-icon { font-size: 2rem; margin-bottom: 8px; }
+    .pix-label {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: #2b3a5e;
+      margin-bottom: 4px;
+    }
+    .pix-sub {
+      font-size: 0.85rem;
+      color: #7a6040;
+      margin-bottom: 20px;
+    }
+    .pix-key-display {
+      background: #f0e8d0;
+      border: 1px dashed #c9a84c;
+      border-radius: 10px;
+      padding: 14px 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      color: #2b3a5e;
+      margin-bottom: 16px;
+    }
+    .btn-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 32px;
+      background: linear-gradient(135deg, #b8882a, #f0c96b, #b8882a);
+      background-size: 200% auto;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: background-position 0.3s, transform 0.2s;
+      box-shadow: 0 4px 16px rgba(180,140,60,0.3);
+    }
+    .btn-copy:hover {
+      background-position: right center;
+      transform: translateY(-2px);
+    }
+    .btn-copy:disabled {
+      cursor: wait;
+      opacity: 0.72;
+      transform: none;
+    }
+    .btn-copy.copied {
+      background: linear-gradient(135deg, #2b6e3e, #3d9e5e);
+    }
+
+    .pix-note {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: #7a6040;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(30,30,50,0.55);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: linear-gradient(160deg, #fffdf7 0%, #f9f0e0 100%);
+      border: 1px solid #e2cc97;
+      border-radius: 20px;
+      padding: 40px 32px;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      animation: slideUp 0.25s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+    .modal .flower-photo {
+      width: 100%;
+      max-height: 190px;
+      object-fit: cover;
+      border: 1px solid #e2cc97;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 24px rgba(180,140,60,0.16);
+    }
+    .modal h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: #2b3a5e;
+      margin-bottom: 6px;
+    }
+    .modal .modal-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #b8882a, #f0c96b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+    .modal .modal-pix {
+      background: #f0e8d0;
+      border: 1px dashed #c9a84c;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      letter-spacing: 2px;
+      color: #2b3a5e;
+      margin-bottom: 16px;
+    }
+    .guest-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 18px 0;
+      text-align: left;
+    }
+    .guest-form label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 0.9rem;
+      color: #7a6040;
+    }
+    .guest-form input,
+    .guest-form textarea {
+      width: 100%;
+      border: 1px solid #d8bd7c;
+      border-radius: 10px;
+      background: #fffdf7;
+      color: #2b3a5e;
+      font: 1rem 'Cormorant Garamond', serif;
+      padding: 11px 12px;
+      outline: none;
+    }
+    .guest-form textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+    .guest-form input:focus,
+    .guest-form textarea:focus {
+      border-color: #b8882a;
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.18);
+    }
+    .form-status {
+      min-height: 22px;
+      font-size: 0.88rem;
+      color: #7a6040;
+      text-align: center;
+    }
+    .form-status.error { color: #9c2f2f; }
+    .pix-step { display: none; }
+    .pix-step.open { display: block; }
+    .modal-actions { display: flex; flex-direction: column; gap: 10px; }
+    .modal .btn-copy { width: 100%; justify-content: center; }
+    .btn-close {
+      padding: 11px;
+      background: transparent;
+      border: 1px solid #c9a84c;
+      border-radius: 50px;
+      color: #7a6040;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-close:hover { background: #f0e8d0; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px 48px;
+      border-top: 1px solid #e2cc97;
+    }
+    footer .footer-name {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #2b3a5e;
+    }
+    footer .footer-chapel {
+      font-size: 0.9rem;
+      color: #7a6040;
+      margin-top: 6px;
+      font-style: italic;
+    }
+    footer .footer-date {
+      font-size: 0.8rem;
+      color: #b8a07a;
+      margin-top: 12px;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="crown">✦ ✦ ✦</div>
+  <h1>Zilda Nogueira</h1>
+  <div class="subtitle">Convida você para celebrar</div>
+  <div class="age-badge">65</div>
+  <div class="age-label">anos</div>
+</header>
+
+<!-- HERO MESSAGE -->
+<p class="hero-msg">
+  Com muita alegria e gratidão a Deus,<br>
+  escolha um buquê de flores como presente<br>
+  para a <strong>Zilda</strong> neste dia tão especial! 🌸
+</p>
+
+<div class="divider">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+<!-- GIFT CARDS -->
+<h2 class="section-title">🌸 Lista de Presentes</h2>
+<p class="section-sub">Escolha o valor e presenteie a Zilda com flores</p>
+
+<div class="cards-grid">
+  <div class="card" onclick="openModal('Flores do Campo', 'R$ 40', 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80')">
+    <img class="flower-photo" src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=900&q=80" alt="Flores do campo em tons delicados">
+    <div class="card-content">
+      <div class="gift-name">Flores do Campo</div>
+      <div class="gift-desc">Um presente florido e cheio de carinho para a Zilda</div>
+      <div class="gift-price">R$ 40</div>
+      <button class="btn-gift">Presentear</button>
+    </div>
+  </div>
+  <div class="card" onclick="openModal('Arranjo Floral', 'R$ 60', 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=900&q=80')">
+    <img class="flower-photo" src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=900&q=80" alt="Arranjo de flores coloridas">
+    <div class="card-content">
+      <div class="gift-name">Arranjo Floral</div>
+      <div class="gift-desc">Uma linda composição floral para celebrar seus 65 anos</div>
+      <div class="gift-price">R$ 60</div>
+      <button class="btn-gift">Presentear</button>
+    </div>
+  </div>
+  <div class="card" onclick="openModal('Buquê Especial', 'R$ 100', 'https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=900&q=80')">
+    <img class="flower-photo" src="https://images.unsplash.com/photo-1468327768560-75b778cbb551?auto=format&fit=crop&w=900&q=80" alt="Buquê especial de flores claras">
+    <div class="card-content">
+      <div class="gift-name">Buquê Especial</div>
+      <div class="gift-desc">Um buquê especial para uma ocasião especial</div>
+      <div class="gift-price">R$ 100</div>
+      <button class="btn-gift">Presentear</button>
+    </div>
+  </div>
+  <div class="card" onclick="openModal('Arranjo Nobre', 'R$ 150', 'https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=900&q=80')">
+    <img class="flower-photo" src="https://images.unsplash.com/photo-1508610048659-a06b669e3321?auto=format&fit=crop&w=900&q=80" alt="Arranjo nobre de flores rosadas">
+    <div class="card-content">
+      <div class="gift-name">Arranjo Nobre</div>
+      <div class="gift-desc">Um arranjo grandioso para uma data inesquecível</div>
+      <div class="gift-price">R$ 150</div>
+      <button class="btn-gift">Presentear</button>
+    </div>
+  </div>
+</div>
+
+<!-- PIX SECTION -->
+<div class="pix-section">
+  <h2 class="section-title" style="margin-bottom:6px;">Chave PIX</h2>
+  <p class="section-sub">Contribua diretamente via PIX</p>
+  <div class="pix-box">
+    <div class="pix-icon">💳</div>
+    <div class="pix-label">Chave PIX (CPF)</div>
+    <div class="pix-sub">Zilda Nogueira</div>
+    <div class="pix-key-display" id="pix-display">Informe seus dados antes do PIX</div>
+    <button class="btn-copy" id="btn-copy-main" onclick="openModal('Contribuição Livre', 'Valor livre', 'https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=900&q=80')">
+      <span>📋</span> Enviar dados para PIX
+    </button>
+    <p class="pix-note">
+      Envie via PIX e as flores serão entregues<br>
+      para a <strong>Zilda</strong> no grande dia 🌸
+    </p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Zilda Nogueira</div>
+  <div class="footer-chapel">Campinas - SP · 25 de Julho de 2026</div>
+  <div class="footer-date">25 · 07 · 2026 &nbsp;|&nbsp; 19:30h</div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <img class="flower-photo" id="modal-photo" src="" alt="">
+    <h3 id="modal-title"></h3>
+    <div class="modal-price" id="modal-price"></div>
+    <form class="guest-form" id="guest-form" onsubmit="submitGuestInfo(event)">
+      <label>
+        Seu nome
+        <input id="guest-name" name="name" type="text" autocomplete="name" required>
+      </label>
+      <label>
+        WhatsApp
+        <input id="guest-phone" name="phone" type="tel" autocomplete="tel" required>
+      </label>
+      <label>
+        Mensagem para a Zilda
+        <textarea id="guest-message" name="message" placeholder="Opcional"></textarea>
+      </label>
+      <button class="btn-copy" id="btn-send-pix" type="submit">
+        <span>💳</span> Enviar e ir para o PIX
+      </button>
+      <div class="form-status" id="form-status"></div>
+    </form>
+    <div class="pix-step" id="pix-step">
+      <p style="font-size:0.9rem;color:#7a6040;margin-bottom:16px;">Dados enviados. Copie a chave PIX abaixo e realize o pagamento no seu banco</p>
+      <div class="modal-pix">43179901894</div>
+      <button class="btn-copy" id="btn-copy-modal" onclick="copyPix('btn-copy-modal')">
+        <span>📋</span> Copiar chave PIX
+      </button>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-close" onclick="document.getElementById('modal').classList.remove('open')">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const PIX = '43179901894';
+  const WEBHOOK_URL = 'https://automacao2.themidiamarketing.com.br/webhook/zilda';
+  let selectedGift = {
+    name: '',
+    price: '',
+    imageUrl: ''
+  };
+
+  function openModal(name, price, imageUrl) {
+    selectedGift = { name, price, imageUrl };
+    const modalPhoto = document.getElementById('modal-photo');
+    modalPhoto.src = imageUrl;
+    modalPhoto.alt = name;
+    document.getElementById('modal-title').textContent = name;
+    document.getElementById('modal-price').textContent = price;
+    document.getElementById('guest-form').reset();
+    document.getElementById('guest-form').style.display = 'flex';
+    document.getElementById('pix-step').classList.remove('open');
+    document.getElementById('form-status').textContent = '';
+    document.getElementById('form-status').classList.remove('error');
+    document.getElementById('btn-send-pix').disabled = false;
+    document.getElementById('btn-send-pix').innerHTML = '<span>💳</span> Enviar e ir para o PIX';
+    document.getElementById('btn-copy-modal').innerHTML = '<span>📋</span> Copiar chave PIX';
+    document.getElementById('btn-copy-modal').classList.remove('copied');
+    document.getElementById('modal').classList.add('open');
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('modal')) {
+      document.getElementById('modal').classList.remove('open');
+    }
+  }
+
+  async function submitGuestInfo(event) {
+    event.preventDefault();
+
+    const formStatus = document.getElementById('form-status');
+    const sendButton = document.getElementById('btn-send-pix');
+    const payload = {
+      nome: document.getElementById('guest-name').value.trim(),
+      whatsapp: document.getElementById('guest-phone').value.trim(),
+      mensagem: document.getElementById('guest-message').value.trim(),
+      presente: selectedGift.name,
+      valor: selectedGift.price,
+      imagem: selectedGift.imageUrl,
+      pix: PIX,
+      data_envio: new Date().toISOString(),
+      origem: window.location.href
+    };
+    const webhookData = new URLSearchParams(payload);
+
+    formStatus.textContent = '';
+    formStatus.classList.remove('error');
+    sendButton.disabled = true;
+    sendButton.innerHTML = '<span>⏳</span> Enviando...';
+
+    try {
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
+        body: webhookData
+      });
+
+      document.getElementById('guest-form').style.display = 'none';
+      document.getElementById('pix-step').classList.add('open');
+      copyPix('btn-copy-modal');
+    } catch (error) {
+      formStatus.textContent = 'Não foi possível enviar agora. Confira sua conexão e tente novamente.';
+      formStatus.classList.add('error');
+      sendButton.disabled = false;
+      sendButton.innerHTML = '<span>💳</span> Enviar e ir para o PIX';
+    }
+  }
+
+  function copyPix(btnId) {
+    navigator.clipboard.writeText(PIX).then(() => {
+      const btn = document.getElementById(btnId);
+      btn.classList.add('copied');
+      btn.innerHTML = '<span>✅</span> Copiado!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = '<span>📋</span> Copiar chave PIX';
+      }, 2500);
+    }).catch(() => {
+      // fallback
+      const el = document.createElement('textarea');
+      el.value = PIX;
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      const btn = document.getElementById(btnId);
+      btn.classList.add('copied');
+      btn.innerHTML = '<span>✅</span> Copiado!';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        btn.innerHTML = '<span>📋</span> Copiar chave PIX';
+      }, 2500);
+    });
+  }
+</script>
+</body>
+</html>
